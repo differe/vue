@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script>
+         history.pushState({data:10},"","/aa");//不会向服务器发起请求  第二个参数目前没啥用
+         window.onpopstate;//知道前进和后退的
+     </script>-->
+</head>
+<body>
+<span>
+        span
+    </span>
+<div>
+    div
+</div>
+<div class="box">
+</div>
+<script>
+    var span=document.querySelector("span");
+    var div=document.querySelector("div");
+    var box=document.querySelector(".box");
+    span.onclick=function () {
+        history.pushState({path:"span"},"","/app/history/span?_ijt=ti0k49pte8n0rh9h4q4ug9bjf1");
+        fetch("./span.html").then(function (e) {
+            return e.text()
+        }).then(function (e) {
+            box.innerHTML=e;
+        })
+    }
+    div.onclick=function () {
+        history.pushState({path:"div"},"","/app/history/div?_ijt=ti0k49pte8n0rh9h4q4ug9bjf1");
+        fetch("./div.html").then(function (e) {
+            return e.text()
+        }).then(function (e) {
+            box.innerHTML=e;
+        })
+    }
+    /*window.onpopstate=function () {
+        alert(history.state.path);
+    }*/
+    /*
+    * 一个属性或者样式 连续不断的发生变化 在你的视觉上面呈现动画的形态
+    * requestAnimationFrame 请求动画
+    * cancelAnimationFrame 停止动画
+    * */
+</script>
+</body>
+</html>
